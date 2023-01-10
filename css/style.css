@@ -220,9 +220,8 @@ body {
 .solution {
     position: relative;
     padding: 192px 0;
-    background: url(../images/office.jpg);
-    background-size: cover;
-    max-width: 1600px;
+    background: url(../images/office.jpg) no-repeat center;
+    max-width: 1440px;
     margin: 0 auto;
 }
 
