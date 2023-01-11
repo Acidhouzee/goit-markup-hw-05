@@ -1,4 +1,7 @@
 :root {
+
+    /* Color Scheme */
+
     --primary-text-color: #434455;
     --title-text-color: #2e2f42;
     --accent-color: #4d5ae5;
@@ -10,6 +13,11 @@
     --theme-green-color: #31D0AA;
     --theme-alter-background: #fcfcfc;
     --theme-dark-color: #000000;
+
+    /* Animation */
+
+    --theme-trnsition-time: 250ms;
+    --theme-trnsition-cubic: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -87,19 +95,21 @@ body {
     line-height: 1.19em;
     letter-spacing: 0.04em;
     align-items: center;
-    border: 1px solid var(--accent-color);
+    border: 1px solid;
+    border-color: var(--accent-color);
     border-radius: 4px;
     cursor: pointer;
     color: var(--inverse-text-color);
-    background: var(--accent-color);
+    background-color: var(--accent-color);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: box-shadow;
+    transition: var(--theme-trnsition-time) var(--theme-trnsition-cubic);
+    transition-property: box-shadow, background-color, border-color;
 }
   
 .btn:hover,
 .btn:focus {
-    background-color: var(--accent-color);
+    background-color: var(--active-button-color);
+    border-color: var(--active-button-color);
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
                 0px 1px 1px rgba(46, 47, 66, 0.16),
                 0px 2px 1px rgba(46, 47, 66, 0.08);
@@ -210,6 +220,8 @@ body {
     font-weight: 400;
     text-decoration: none;
     color: var(--primary-text-color);
+    transition: var(--theme-trnsition-time) var(--theme-trnsition-cubic);
+    transition-property: color;
 }
 
 .info-item .info-link:hover {
@@ -220,7 +232,7 @@ body {
 
 .solution {
     position: relative;
-    padding: 192px 0;
+    padding: 190px 0;
     background: url(../images/office.jpg) no-repeat center;
     max-width: 1440px;
     margin: 0 auto;
@@ -368,7 +380,7 @@ body {
     line-height: 0.7;
     background-color: var(--accent-color);
     border-radius: 50%;
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--theme-trnsition-time) var(--theme-trnsition-cubic);
     transition-property: background-color;
 }
 
@@ -401,7 +413,7 @@ body {
     border: 1px solid;
     border-color: var(--theme-grey-color);
     border-radius: 4px;
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--theme-trnsition-time) var(--theme-trnsition-cubic);
     transition-property: border-color;
 }
 
@@ -411,7 +423,7 @@ body {
 }
 
 .customers .customers-list .customers-item .customers-item-link .link-icon {
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--theme-trnsition-time) var(--theme-trnsition-cubic);
     fill: var(--theme-grey-color);
     transition-property: fill;
 }
@@ -455,7 +467,7 @@ body {
     background-color: var(--light-background-color);
     border-color: var(--corn-text-color);
     box-shadow: none;
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--theme-trnsition-time) var(--theme-trnsition-cubic);
     transition-property: color, background-color, border-color, box-shadow;
 }
 .tab-item .tab-btn.active,
@@ -469,37 +481,35 @@ body {
                 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
-.portfolio-tabs + .portfolio-gallery {
+.portfolio-tabs + .portfolio-gallery.gallery-list {
     margin-top: 72px;
 }
 
-.portfolio-gallery .gallery-list {
+.portfolio-gallery.gallery-list {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
+    row-gap: 48px;
 }
 
-.portfolio-gallery .gallery-list .portfolio-item {
-    margin: 0 0 24px;
+.portfolio-gallery.gallery-list .portfolio-item {
     flex-basis: calc((100% - 48px) / 3);
     box-sizing: border-box;
 }
 
-.portfolio-gallery .gallery-list .portfolio-item:nth-child(n + 7) {
+.portfolio-gallery.gallery-list .portfolio-item:nth-child(n + 7) {
     margin-bottom: 0;
 }
 
-.portfolio-gallery .gallery-list .portfolio-wrapper {
+.portfolio-gallery.gallery-list .portfolio-wrapper {
     background-color: var(--inverse-text-color);
-    border: 0.5px solid;
-    border-color: var(--light-background-color);
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08);
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--theme-trnsition-time) var(--theme-trnsition-cubic);
     transition-property: box-shadow;
 }
 
-.portfolio-gallery .gallery-list .portfolio-wrapper:hover,
-.portfolio-gallery .gallery-list .portfolio-wrapper:focus {
+.portfolio-gallery.gallery-list .portfolio-link:hover .portfolio-wrapper,
+.portfolio-gallery.gallery-list .portfolio-link:focus .portfolio-wrapper {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
                 0px 1px 1px rgba(46, 47, 66, 0.16),
                 0px 2px 1px rgba(46, 47, 66, 0.08);
@@ -507,6 +517,9 @@ body {
 
 .portfolio-item .item-content {
     padding: 32px 16px;
+    border: 1px solid;
+    border-color: var(--light-background-color);
+    border-top: none;
 }
 
 .portfolio-item .title + .gallery-category {
@@ -521,8 +534,8 @@ body {
     bottom: 0;
     padding: 40px 32px;
     background-color:rgba(77, 90, 229, 0.9);
-    transform: translateY(100%);
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(101%);
+    transition: var(--theme-trnsition-time) var(--theme-trnsition-cubic);
     transition-property: transform;
 }
 
@@ -584,7 +597,7 @@ body {
     padding: 8px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--theme-trnsition-time) var(--theme-trnsition-cubic);
     transition-property: background-color;
 }
 
@@ -618,8 +631,8 @@ body {
     opacity: 1;
     visibility: visible;
     background: rgba(46, 47, 66, 0.4);
-    transform: translateX(0);
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+    transition: var(--theme-trnsition-time) var(--theme-trnsition-cubic);
     transition-property: transform, opacity, visibility;
     z-index: 9999;
 }
@@ -628,7 +641,7 @@ body {
     pointer-events: none;
     opacity: 0;
     visibility: hidden;
-    transform: translateX(-100%);
+    transform: translateY(-100%);
 }
 
 .modal-window {
@@ -660,7 +673,7 @@ body {
 .modal-close-btn svg {
     width: 8px;
     height: 8px;
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--theme-trnsition-time) var(--theme-trnsition-cubic);
     transition-property: fill;
 }
 
